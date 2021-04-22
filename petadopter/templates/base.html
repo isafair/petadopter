@@ -1,0 +1,63 @@
+{% load static from static%}
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pet Adopter</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+  </head>
+  <body>
+    <div class="navbar">
+      <a href="{% url 'adopter:list' %}"
+        ><img src="{% static 'logo.png' %}"
+      /></a>
+      <div class="dropdown">
+        <button class="dropbtn">Index</button>
+        <div class="dropdown-content">
+          <a href="{% url 'adopter:list' %}" class="highlight">Adoption List</a>
+          <a href="{% url 'adopter:create' %}" class="highlight"
+            >Submit your rescue Here!</a
+          >
+        </div>
+      </div>
+
+      <div class="login-container">
+        {% if user.is_authenticated %}
+        <form
+          class="logout-link"
+          action="{% url 'accounts:logout' %}"
+          method="post"
+        >
+          {% csrf_token %}
+          <button type="submit">Logout</button>
+        </form>
+
+        {% else %}
+        <div class="logsign">
+          <form class="login-link" action="{% url 'accounts:signup' %}">
+            <button type="submit">Signup!</button>
+          </form>
+        </div>
+        <div class="logsign">
+          <form
+            class="login-link"
+            action="{% url 'accounts:login' %}"
+            method="post"
+          >
+            {% csrf_token %}
+            <button type="submit">Login</button>
+          </form>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    <!-- <div class="logo">
+      <h1>
+        <a href="{% url 'adopter:list' %}"
+          ><img src="{% static 'logo.png' %}"
+        /></a>
+      </h1>
+    </div> -->
+    <div class="wrapper">{% block content %} {% endblock %}</div>
+  </body>
+</html>
