@@ -1,0 +1,42 @@
+To open and run:
+
+make sure u have django and python downloaded. to get django and create a virtual enviornment
+on mac: 
+
+mkdir django
+cd django
+python3 -m venv django
+source django/bin/activate
+
+to install:
+
+pip install Django
+
+(https://djangocentral.com/how-to-install-django/)
+
+clone the repository
+and open it. to run it make sure you are in the outer directory that contains
+the manage.py file
+
+then,
+
+python manage.py runserver
+
+this should start the server and it should open in the web browser.
+
+then you can create super user:
+
+python manage.py createsuperuser
+
+and make ur own user (command line)
+
+Username (leave blank to use 'user'): admin
+Email address: admin@gamil.com
+Password:
+Password (again):
+
+then open up 
+http://127.0.0.1:8000/admin/
+
+and log in with user details to control posts and edit from admin site
+
